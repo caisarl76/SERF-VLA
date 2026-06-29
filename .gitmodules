@@ -1,6 +1,6 @@
 [submodule "BEHAVIOR-1K"]
 	path = BEHAVIOR-1K
-	url = https://github.com/StanfordVL/BEHAVIOR-1K.git
+	url = https://github.com/caisarl76/BEHAVIOR-1K.git
 [submodule "external/openpi"]
 	path = external/openpi
 	url = https://github.com/wensi-ai/openpi.git

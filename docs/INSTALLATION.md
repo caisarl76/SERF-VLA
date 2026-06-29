@@ -46,7 +46,7 @@ conda activate behavior
 bash setup.sh --omnigibson --bddl --joylo --eval \
   --accept-nvidia-eula --confirm-no-conda
 
-bash setup.sh --datasets --accept-dataset-tos
+bash setup.sh --dataset --accept-dataset-tos
 ```
 
 The BEHAVIOR-1K setup script can leave incompatible `numpy` / `scipy`
