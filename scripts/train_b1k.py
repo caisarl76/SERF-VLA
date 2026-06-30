@@ -9,8 +9,28 @@ import functools
 import logging
 import os
 import platform
+from pathlib import Path
+import sys
 import time
 from typing import Any
+
+
+def configure_process_env() -> None:
+    os.environ.setdefault("XLA_PYTHON_CLIENT_MEM_FRACTION", "0.9")
+    os.environ.setdefault("XLA_PYTHON_CLIENT_ALLOCATOR", "platform")
+    os.environ.setdefault("OPENBLAS_NUM_THREADS", "16")
+    os.environ.setdefault("MKL_NUM_THREADS", "16")
+
+
+def configure_python_path() -> None:
+    repo_root = Path(__file__).resolve().parents[1]
+    omnigibson_root = repo_root / "BEHAVIOR-1K" / "OmniGibson"
+    if omnigibson_root.is_dir():
+        sys.path.insert(0, str(omnigibson_root))
+
+
+configure_process_env()
+configure_python_path()
 
 import etils.epath as epath
 import flax.nnx as nnx
@@ -23,14 +43,6 @@ import numpy as np
 import optax
 import tqdm_loggable.auto as tqdm
 import wandb
-
-# Configure JAX memory allocation to prevent OOM errors
-os.environ.setdefault('XLA_PYTHON_CLIENT_MEM_FRACTION', '0.9')
-os.environ.setdefault('XLA_PYTHON_CLIENT_ALLOCATOR', 'platform')
-
-# Configure OpenBLAS to prevent thread creation errors
-os.environ.setdefault('OPENBLAS_NUM_THREADS', '16')
-os.environ.setdefault('MKL_NUM_THREADS', '16')
 
 import openpi.models.model as _model
 import openpi.shared.array_typing as at

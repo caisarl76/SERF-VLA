@@ -15,7 +15,6 @@ import numpy as np
 
 from openpi import transforms
 from openpi.models import model as _model
-from omnigibson.learning.utils.eval_utils import PROPRIOCEPTION_INDICES
 
 from b1k.policies.b1k_policy import extract_state_from_proprio, _parse_image, B1kOutputs
 
